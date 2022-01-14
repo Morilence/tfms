@@ -1,0 +1,141 @@
+.tfms {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    position: relative;
+
+    border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+/* reset */
+.tfms ul,li {
+    list-style: none;
+}
+
+.tfms a {
+    text-decoration: none;
+}
+
+/* components */
+.tfms__treeview {
+    position: relative;
+    width: 100%;
+    min-width: 250px;
+    max-width: 320px;
+    height: 100%;
+}
+
+.tfms__treeview__wrapper {
+    position: relative;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    padding: 15px 0;
+    margin: 0;
+    background-color: rgba(128, 128, 128, 0.08);
+    box-sizing: border-box;
+}
+
+.tfms__list {
+    position: relative;
+    top: 0;
+    left: 0;
+    padding-left: 0;
+}
+
+.tfms__treeview__wrapper>.tfms__list {
+    margin: 0;
+}
+
+.tfms__item__name {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    height: 20px;
+    padding: 3px 0;
+
+    transition: background-color 0.2s;
+    
+    user-select: none;
+    cursor: pointer;
+}
+
+.tfms__item__name::before {
+    content: "";
+    display: inline-block;
+    width: 12px;
+    margin-right: 4px;
+}
+
+.tfms__item__name:hover {
+    background-color: rgba(128, 128, 128, 0.1);
+}
+
+[class*="tfms__list__dir"]>.tfms__item__name::before {
+    content: ">";
+    transition: transform 0.1s;
+}
+
+.tfms__list__dir_folded>.tfms__item__name::before {
+    transform: rotate(0deg);
+}
+
+.tfms__list__dir_unfolded>.tfms__item__name::before {
+    transform: rotate(90deg);
+}
+
+.tfms__item__name input {
+    height: 90%;
+}
+
+.tfms__list__dir_folded>.tfms__list {
+    display: none;
+}
+
+[class^="tfms__treeview__ctxmenu"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+
+    list-style: none;
+    margin: 0;
+    padding: 5px 4.5px;
+    background-color: #fff;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+
+    z-index: 1;
+}
+
+.tfms__treeview__ctxmenu_hide {
+    display: none;
+}
+
+.tfms__treeview__ctxmenu_active {
+    display: block;
+}
+
+[class^="tfms__ctxmenu__item"] {
+    padding: 4px 7.5px;
+    font-size: 15px;
+
+    transition: background-color 0.2s;
+
+    user-select: none;
+    cursor: pointer;
+}
+
+.tfms__ctxmenu__item:hover {
+    background-color: rgba(128, 128, 128, 0.1);
+}
+
+.tfms__ctxmenu__item_disabled {
+    color: rgba(128, 128, 128, 0.7);
+    cursor: not-allowed;
+}

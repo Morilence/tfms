@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Demo of Using TFMS</title>
+        <link rel="stylesheet" href="./src/tfms.css" />
+        <script src="./src/tfms.js"></script>
+        <script src="./mock/index.js"></script>
+        <style>
+            html,
+            body {
+                padding: 0;
+                margin: 0;
+                width: 100%;
+                height: 100vh;
+                overflow: hidden;
+            }
+
+            #app {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+
+                position: relative;
+
+                width: 600px;
+                height: 100%;
+                margin: 0 auto;
+            }
+
+            .tfms {
+                width: 300px;
+                height: 600px;
+            }
+
+            .controls {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+
+                height: 80%;
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <div class="tfms"></div>
+            <div class="controls">
+                <button class="reload-btn">reload</button>
+                <button class="parse-btn">parse</button>
+            </div>
+        </div>
+        <script>
+            tfms.build(
+                ".tfms",
+                {
+                    indent: 14,
+                    operName: {
+                        newfile: "新建文件",
+                        newdir: "新建文件夹",
+                        cut: "剪切",
+                        copy: "复制",
+                        paste: "粘贴",
+                        rename: "重命名",
+                        remove: "删除",
+                    },
+                },
+                mock()
+            );
+
+            tfms.on("itemclick", evt => {
+                console.log(evt);
+            });
+            tfms.on("new", evt => {
+                console.log(evt);
+            });
+            tfms.on("cut", evt => {
+                console.log(evt);
+            });
+            tfms.on("copy", evt => {
+                console.log(evt);
+            });
+            tfms.on("paste", evt => {
+                console.log(evt);
+            });
+            tfms.on("remove", evt => {
+                console.log(evt);
+            });
+            tfms.on("rename", evt => {
+                console.log(evt);
+            });
+            tfms.on("nameconflict", () => {
+                alert("A file/folder with the same name already exists in the current directory！");
+            });
+
+            document.querySelector(".reload-btn").addEventListener("click", () => {
+                tfms.reload(mock());
+            });
+            document.querySelector(".parse-btn").addEventListener("click", () => {
+                console.log(tfms.parse());
+            });
+        </script>
+    </body>
+</html>
