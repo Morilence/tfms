@@ -74,4 +74,4 @@ tfms.on("nameconflict", () => {
 
 ## Preview
 
-[https://morilence.github.io/strech-box/](https://morilence.github.io/strech-box/)
+[https://morilence.github.io/tfms/](https://morilence.github.io/tfms/)
